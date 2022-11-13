@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/activityTypeImageVIew"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_margin="10dp"
             android:padding="5dp"
             tools:src="@drawable/ic_baseline_adb_24" />

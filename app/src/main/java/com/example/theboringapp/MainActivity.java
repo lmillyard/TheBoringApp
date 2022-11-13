@@ -23,8 +23,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Creating a new array list and adding data to it
         ArrayList<ActivityTypeModel> activityTypeModelArrayList = new ArrayList<ActivityTypeModel>();
+        activityTypeModelArrayList.add(new ActivityTypeModel("Education", R.drawable.ic_baseline_adb_24));
+        activityTypeModelArrayList.add(new ActivityTypeModel("Recreational", R.drawable.ic_baseline_local_florist_24));
         activityTypeModelArrayList.add(new ActivityTypeModel("Social", R.drawable.ic_baseline_people_outline_24));
-        activityTypeModelArrayList.add(new ActivityTypeModel("Education", R.drawable.ic_baseline_cast_for_education_24));
+        activityTypeModelArrayList.add(new ActivityTypeModel("DIY", R.drawable.ic_baseline_handyman_24));
+        activityTypeModelArrayList.add(new ActivityTypeModel("Charity", R.drawable.ic_baseline_emoji_people_24));
+        activityTypeModelArrayList.add(new ActivityTypeModel("Cooking", R.drawable.ic_baseline_fastfood_24));
+        activityTypeModelArrayList.add(new ActivityTypeModel("Relaxation", R.drawable.ic_baseline_single_bed_24));
+        activityTypeModelArrayList.add(new ActivityTypeModel("Music", R.drawable.ic_baseline_music_note_24));
+        activityTypeModelArrayList.add(new ActivityTypeModel("Busy Work", R.drawable.ic_baseline_cleaning_services_24));
 
         // Initializing the adapter class and passing our arraylist to it.
         ActivityTypeAdapter activityTypeAdapter = new ActivityTypeAdapter(this, activityTypeModelArrayList);
