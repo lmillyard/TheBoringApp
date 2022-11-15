@@ -1,9 +1,7 @@
 package com.example.theboringapp.repository;
 
-import android.util.Log;
-
 import com.example.theboringapp.repository.boring_models.SearchResponse;
-import com.example.theboringapp.repository.services.ActivitiesService;
+import com.example.theboringapp.repository.services.VentureService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,7 +17,7 @@ public class ApiHelper {
 
     public ApiHelper() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(logging)
@@ -32,9 +30,9 @@ public class ApiHelper {
                 .build();
     }
 
-    public void searchActivityType(String searchTerm) {
-        ActivitiesService activitiesService = retrofit.create(ActivitiesService.class);
-        Call<SearchResponse> call = activitiesService.searchActivities("type=" + searchTerm);
+    public void searchVenture(String searchTerm) {
+        VentureService ventureService = retrofit.create(VentureService.class);
+        Call<SearchResponse> call = ventureService.searchVentures("type=" + searchTerm);
         call.enqueue(new Callback<SearchResponse>() {
             @Override
             public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {

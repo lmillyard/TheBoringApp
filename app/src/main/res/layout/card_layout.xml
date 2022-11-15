@@ -17,7 +17,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/activityTypeImageVIew"
+            android:id="@+id/ventureImageVIew"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_margin="10dp"
@@ -25,13 +25,13 @@
             tools:src="@drawable/ic_baseline_adb_24" />
 
         <TextView
-            android:id="@+id/activityTypeTextView"
+            android:id="@+id/ventureTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_toEndOf="@id/activityTypeImageVIew"
-            android:layout_alignTop="@id/activityTypeImageVIew"
-            android:layout_alignBottom="@id/activityTypeImageVIew"
+            android:layout_toEndOf="@id/ventureImageVIew"
+            android:layout_alignTop="@id/ventureImageVIew"
+            android:layout_alignBottom="@id/ventureImageVIew"
             android:gravity="center"
             tools:text="Something really fun!"
             android:textColor="@color/black"

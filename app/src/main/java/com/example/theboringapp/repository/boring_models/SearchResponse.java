@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class SearchResponse {
     @SerializedName("activity")
-    private String activity;
+    private String venture;
     @SerializedName("accessibility")
     private int accessibility;
     @SerializedName("type")
@@ -16,8 +16,8 @@ public class SearchResponse {
     @SerializedName("key")
     private int key;
 
-    public String getActivity() {
-        return activity;
+    public String getVenture() {
+        return venture;
     }
 
     public int getAccessibility() {
