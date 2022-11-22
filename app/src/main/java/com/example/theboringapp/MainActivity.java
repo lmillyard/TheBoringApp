@@ -1,19 +1,20 @@
 package com.example.theboringapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.theboringapp.adapters.VentureAdapter;
-import com.example.theboringapp.models.VentureModel;
+import com.example.theboringapp.adapters.VentureTypeAdapter;
+import com.example.theboringapp.models.VentureType;
 import com.example.theboringapp.repository.ApiHelper;
+import com.example.theboringapp.repository.VentureTypeRepositoryFactory;
+import com.example.theboringapp.repository.boring_models.SearchResponse;
+import com.example.theboringapp.repository.callbacks.GetVentureCallback;
+import java.util.List;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GetVentureCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,33 +23,29 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView activityTypeRecyclerView = findViewById(R.id.activityTypeRecyclerView);
 
+        List<VentureType> ventureTypeList = VentureTypeRepositoryFactory.getVentureTypesRepository().getVentureTypes();
 
-        ArrayList<VentureModel> ventureModelArrayList = getActivityTypeModels();
 
-        VentureAdapter ventureAdapter = new VentureAdapter(this, ventureModelArrayList);
+        VentureTypeAdapter ventureTypeAdapter = new VentureTypeAdapter(this, ventureTypeList);
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
         activityTypeRecyclerView.setLayoutManager(linearLayoutManager);
-        activityTypeRecyclerView.setAdapter(ventureAdapter);
+        activityTypeRecyclerView.setAdapter(ventureTypeAdapter);
 
         ApiHelper apiHelper = new ApiHelper();
-        apiHelper.searchVenture("recreational");
+        apiHelper.searchVenture("recreational", this);
     }
 
-    @NonNull
-    private ArrayList<VentureModel> getActivityTypeModels() {
-        ArrayList<VentureModel> ventureModelArrayList = new ArrayList<VentureModel>();
-        ventureModelArrayList.add(new VentureModel("Education", R.drawable.ic_baseline_adb_24));
-        ventureModelArrayList.add(new VentureModel("Recreational", R.drawable.ic_baseline_local_florist_24));
-        ventureModelArrayList.add(new VentureModel("Social", R.drawable.ic_baseline_people_outline_24));
-        ventureModelArrayList.add(new VentureModel("DIY", R.drawable.ic_baseline_handyman_24));
-        ventureModelArrayList.add(new VentureModel("Charity", R.drawable.ic_baseline_emoji_people_24));
-        ventureModelArrayList.add(new VentureModel("Cooking", R.drawable.ic_baseline_fastfood_24));
-        ventureModelArrayList.add(new VentureModel("Relaxation", R.drawable.ic_baseline_single_bed_24));
-        ventureModelArrayList.add(new VentureModel("Music", R.drawable.ic_baseline_music_note_24));
-        ventureModelArrayList.add(new VentureModel("Busy Work", R.drawable.ic_baseline_cleaning_services_24));
-        return ventureModelArrayList;
+
+    @Override
+    public void onSuccess(SearchResponse data) {
+
+    }
+
+    @Override
+    public void onFailure(String message) {
+
     }
 }

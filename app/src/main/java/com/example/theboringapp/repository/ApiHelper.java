@@ -1,6 +1,7 @@
 package com.example.theboringapp.repository;
 
 import com.example.theboringapp.repository.boring_models.SearchResponse;
+import com.example.theboringapp.repository.callbacks.GetVentureCallback;
 import com.example.theboringapp.repository.services.VentureService;
 
 import okhttp3.OkHttpClient;
@@ -30,19 +31,23 @@ public class ApiHelper {
                 .build();
     }
 
-    public void searchVenture(String searchTerm) {
+    public void searchVenture(String searchTerm, GetVentureCallback callback) {
         VentureService ventureService = retrofit.create(VentureService.class);
         Call<SearchResponse> call = ventureService.searchVentures("type=" + searchTerm);
         call.enqueue(new Callback<SearchResponse>() {
             @Override
             public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                 if(response.isSuccessful()) {
+                    SearchResponse body = response.body();
+                    callback.onSuccess(body);
                 } else {
+                    callback.onFailure("Response not successful:" + response.errorBody().toString());
                 }
             }
 
             @Override
             public void onFailure(Call<SearchResponse> call, Throwable t) {
+                callback.onFailure("Check connection.");
                 t.printStackTrace();
             }
         });

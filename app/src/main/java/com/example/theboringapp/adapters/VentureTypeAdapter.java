@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theboringapp.R;
-import com.example.theboringapp.models.VentureModel;
+import com.example.theboringapp.models.VentureType;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class VentureAdapter extends RecyclerView.Adapter<VentureAdapter.ViewHolder> {
+public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.ViewHolder> {
 
     private final Context context;
-    private final ArrayList<VentureModel> ventureModelArrayList;
+    private final List<VentureType> ventureTypeList;
 
-    public VentureAdapter(Context context, ArrayList<VentureModel> ventureModelArrayList) {
+    public VentureTypeAdapter(Context context, List<VentureType> ventureTypeList) {
         this.context = context;
-        this.ventureModelArrayList = ventureModelArrayList;
+        this.ventureTypeList = ventureTypeList;
     }
 
     @NonNull
@@ -34,14 +34,14 @@ public class VentureAdapter extends RecyclerView.Adapter<VentureAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        VentureModel model = ventureModelArrayList.get(position);
+        VentureType model = ventureTypeList.get(position);
         holder.ventureTextView.setText(model.getVentureName());
         holder.ventureImageView.setImageResource(model.getVentureImage());
     }
 
     @Override
     public int getItemCount() {
-        return ventureModelArrayList.size();
+        return ventureTypeList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
