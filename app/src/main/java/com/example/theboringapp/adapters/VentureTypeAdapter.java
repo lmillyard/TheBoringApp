@@ -34,9 +34,12 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        VentureType model = ventureTypeList.get(position);
-        holder.ventureTextView.setText(model.getVentureName());
-        holder.ventureImageView.setImageResource(model.getVentureImage());
+        bindVentureType(holder,  ventureTypeList.get(position));
+    }
+
+    private void bindVentureType(ViewHolder holder, VentureType ventureType) {
+        holder.ventureTextView.setText(ventureType.getVentureName());
+        holder.ventureImageView.setImageResource(ventureType.getVentureImage());
     }
 
     @Override
