@@ -51,8 +51,8 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ventureTextView = itemView.findViewById(R.id.ventureTextView);
-            ventureImageView = itemView.findViewById(R.id.ventureImageVIew);
+            ventureTextView = itemView.findViewById(R.id.ventureTypeTextView);
+            ventureImageView = itemView.findViewById(R.id.ventureTypeImageVIew);
         }
     }
 }
