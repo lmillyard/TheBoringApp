@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">TheBoringApp</string>
-    <string name="pick_activity_type">What activity would you like to do?</string>
+    <string name="pick_activity_type">What kind of activity would you like to do?</string>
 </resources>

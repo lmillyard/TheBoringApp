@@ -6,21 +6,23 @@ public class SearchResponse {
     @SerializedName("activity")
     private String venture;
     @SerializedName("accessibility")
-    private int accessibility;
+    private double accessibility;
     @SerializedName("type")
     private String type;
     @SerializedName("participants")
     private int participants;
     @SerializedName("price")
-    private int price;
+    private double price;
+    @SerializedName("link")
+    private String link;
     @SerializedName("key")
-    private int key;
+    private String key;
 
     public String getVenture() {
         return venture;
     }
 
-    public int getAccessibility() {
+    public double getAccessibility() {
         return accessibility;
     }
 
@@ -32,11 +34,15 @@ public class SearchResponse {
         return participants;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public int getKey() {
+    public String getLink() {
+        return link;
+    }
+
+    public String getKey() {
         return key;
     }
 }

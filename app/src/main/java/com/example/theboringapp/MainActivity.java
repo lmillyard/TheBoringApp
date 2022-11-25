@@ -21,18 +21,16 @@ public class MainActivity extends AppCompatActivity implements GetVentureCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView activityTypeRecyclerView = findViewById(R.id.ventureTypeRecyclerView);
+        RecyclerView ventureTypeRecyclerView = findViewById(R.id.ventureTypeRecyclerView);
 
         List<VentureType> ventureTypeList = VentureTypeRepositoryFactory.getVentureTypesRepository().getVentureTypes();
 
-
         VentureTypeAdapter ventureTypeAdapter = new VentureTypeAdapter(this, ventureTypeList);
-
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
-        activityTypeRecyclerView.setLayoutManager(linearLayoutManager);
-        activityTypeRecyclerView.setAdapter(ventureTypeAdapter);
+        ventureTypeRecyclerView.setLayoutManager(linearLayoutManager);
+        ventureTypeRecyclerView.setAdapter(ventureTypeAdapter);
 
         ApiHelper apiHelper = new ApiHelper();
         apiHelper.searchVenture("recreational", this);

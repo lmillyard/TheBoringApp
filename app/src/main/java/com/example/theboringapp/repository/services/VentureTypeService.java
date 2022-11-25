@@ -6,7 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface VentureService {
+public interface VentureTypeService {
     @GET("api/activity")
-    Call<SearchResponse> searchVentures(@Query("?") String searchTerm);
+    Call<SearchResponse> searchVentures(@Query("type") String ventureType);
 }

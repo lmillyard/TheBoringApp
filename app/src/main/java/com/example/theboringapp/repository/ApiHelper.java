@@ -2,7 +2,7 @@ package com.example.theboringapp.repository;
 
 import com.example.theboringapp.repository.boring_models.SearchResponse;
 import com.example.theboringapp.repository.callbacks.GetVentureCallback;
-import com.example.theboringapp.repository.services.VentureService;
+import com.example.theboringapp.repository.services.VentureTypeService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -32,8 +32,8 @@ public class ApiHelper {
     }
 
     public void searchVenture(String searchTerm, GetVentureCallback callback) {
-        VentureService ventureService = retrofit.create(VentureService.class);
-        Call<SearchResponse> call = ventureService.searchVentures("type=" + searchTerm);
+        VentureTypeService ventureTypeService = retrofit.create(VentureTypeService.class);
+        Call<SearchResponse> call = ventureTypeService.searchVentures(searchTerm);
         call.enqueue(new Callback<SearchResponse>() {
             @Override
             public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {

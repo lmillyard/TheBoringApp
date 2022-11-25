@@ -6,14 +6,16 @@ public class HardcodedVentures implements Venture {
     private String type;
     private int participants;
     private double price;
+    private String link;
     private String key;
 
-    public HardcodedVentures(String name, double accessibility, String type, int participants, int price, String key) {
+    public HardcodedVentures(String name, double accessibility, String type, int participants, double price, String link, String key) {
         this.name = name;
         this.accessibility = accessibility;
         this.type = type;
         this.participants = participants;
         this.price = price;
+        this.link = link;
         this.key = key;
     }
 
@@ -55,6 +57,14 @@ public class HardcodedVentures implements Venture {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getKey() {
