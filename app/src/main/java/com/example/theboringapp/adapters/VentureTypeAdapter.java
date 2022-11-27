@@ -1,6 +1,7 @@
 package com.example.theboringapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theboringapp.R;
+import com.example.theboringapp.VentureDetails;
 import com.example.theboringapp.models.VentureType;
 
 import java.util.List;
@@ -56,6 +58,13 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
             super(itemView);
             ventureTextView = itemView.findViewById(R.id.ventureTypeTextView);
             ventureImageView = itemView.findViewById(R.id.ventureTypeImageVIew);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    itemView.getContext().startActivity(new Intent(itemView.getContext(), VentureDetails.class));
+                }
+            });
         }
     }
 }
