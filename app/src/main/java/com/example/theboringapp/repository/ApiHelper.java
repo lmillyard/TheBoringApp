@@ -31,7 +31,7 @@ public class ApiHelper {
                 .build();
     }
 
-    public void searchVenture(String searchTerm, GetVentureCallback callback) {
+    public void searchVenture(String searchTerm, GetVentureCallback<SearchResponse> callback) {
         VentureTypeService ventureTypeService = retrofit.create(VentureTypeService.class);
         Call<SearchResponse> call = ventureTypeService.searchVentures(searchTerm);
         call.enqueue(new Callback<SearchResponse>() {

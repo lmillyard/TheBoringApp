@@ -14,7 +14,7 @@ import com.example.theboringapp.repository.boring_models.SearchResponse;
 import com.example.theboringapp.repository.callbacks.GetVentureCallback;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements GetVentureCallback {
+public class MainActivity extends AppCompatActivity implements GetVentureCallback<SearchResponse> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
