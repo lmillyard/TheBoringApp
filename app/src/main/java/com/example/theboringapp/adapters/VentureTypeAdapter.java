@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theboringapp.R;
@@ -30,7 +31,7 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.venture_type_card_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -42,6 +43,14 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
     private void bindVentureType(ViewHolder holder, VentureType ventureType) {
         holder.ventureTextView.setText(ventureType.getVentureName());
         holder.ventureImageView.setImageResource(ventureType.getVentureImage());
+
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(view.getContext(), VentureDetails.class));
+            }
+        });
+
     }
 
     @Override
@@ -53,18 +62,14 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
 
         private final TextView ventureTextView;
         private final ImageView ventureImageView;
+        private final CardView container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ventureTextView = itemView.findViewById(R.id.ventureTypeTextView);
             ventureImageView = itemView.findViewById(R.id.ventureTypeImageVIew);
+            container = itemView.findViewById(R.id.container);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    itemView.getContext().startActivity(new Intent(itemView.getContext(), VentureDetails.class));
-                }
-            });
         }
     }
 }
