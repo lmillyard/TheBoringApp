@@ -17,7 +17,7 @@ public interface Venture {
     double getPrice();
     // A factor describing the cost of the event with zero being free [0, 1]
 
-    String getKey();
-    // A unique numeric id [1000000, 9999999]
+    String getLink();
+    // a link to website - I.E learning resource
 
 }

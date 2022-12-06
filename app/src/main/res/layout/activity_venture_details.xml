@@ -15,7 +15,8 @@
         android:textSize="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <TextView
         android:id="@+id/ventureNameDetailsTextView"
@@ -27,4 +28,68 @@
         app:layout_constraintRight_toRightOf="@id/detailsTextView"
         tools:text="Do something most excellent!"
         />
+
+    <TextView
+        android:id="@+id/ventureTypeDetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/android_standard_padding"
+        app:layout_constraintTop_toBottomOf="@id/ventureNameDetailsTextView"
+        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
+        app:layout_constraintRight_toRightOf="@id/detailsTextView"
+        tools:text="Social"
+        />
+
+    <TextView
+        android:id="@+id/ventureParticipantsDetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/android_standard_padding"
+        app:layout_constraintTop_toBottomOf="@id/ventureTypeDetailsTextView"
+        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
+        app:layout_constraintRight_toRightOf="@id/detailsTextView"
+        tools:text="10"
+        />
+
+    <TextView
+        android:id="@+id/venturePriceDetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/android_standard_padding"
+        app:layout_constraintTop_toBottomOf="@id/ventureParticipantsDetailsTextView"
+        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
+        app:layout_constraintRight_toRightOf="@id/detailsTextView"
+        tools:text="0.5"
+        />
+
+    <TextView
+        android:id="@+id/ventureLinkDetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/android_standard_padding"
+        app:layout_constraintTop_toBottomOf="@id/venturePriceDetailsTextView"
+        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
+        app:layout_constraintRight_toRightOf="@id/detailsTextView"
+        tools:text="www.dosometingawesome.com"
+        />
+
+    <TextView
+        android:id="@+id/ventureAccessibilityDetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/android_standard_padding"
+        app:layout_constraintTop_toBottomOf="@id/ventureLinkDetailsTextView"
+        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
+        app:layout_constraintRight_toRightOf="@id/detailsTextView"
+        tools:text="0.35"
+        />
+
+    <Button
+        android:id="@+id/tryAgainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try Again?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

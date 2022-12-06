@@ -47,7 +47,9 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(view.getContext(), VentureDetails.class));
+                Intent intent = new Intent(view.getContext(), VentureDetails.class);
+                intent.putExtra("Venture", ventureType.getVentureName());
+                context.startActivity(intent);
             }
         });
 

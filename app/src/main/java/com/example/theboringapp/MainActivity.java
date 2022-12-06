@@ -14,7 +14,7 @@ import com.example.theboringapp.repository.boring_models.SearchResponse;
 import com.example.theboringapp.repository.callbacks.GetVentureCallback;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements GetVentureCallback<SearchResponse> {
+public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +31,6 @@ public class MainActivity extends AppCompatActivity implements GetVentureCallbac
 
         ventureTypeRecyclerView.setLayoutManager(linearLayoutManager);
         ventureTypeRecyclerView.setAdapter(ventureTypeAdapter);
-
-        ApiHelper apiHelper = new ApiHelper();
-        apiHelper.searchVenture("recreational", this);
-    }
-
-
-    @Override
-    public void onSuccess(SearchResponse data) {
-
-    }
-
-    @Override
-    public void onFailure(String message) {
 
     }
 }
