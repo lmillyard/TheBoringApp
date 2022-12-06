@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.theboringapp.repository.ApiHelper;
@@ -24,22 +25,29 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     private TextView ventureLinkDetailsTextView;
     private TextView ventureAccessibilityDetailsTextView;
     private String ventureTypeName;
+    private ProgressBar loadingProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venture_details);
+
+        setUpUi();
+        loadingProgressBar.setVisibility(View.VISIBLE);
+        ventureTypeName = getVentureDetails();
+
+        ApiHelper apiHelper = new ApiHelper();
+        apiHelper.searchVenture(ventureTypeName, this);
+    }
+
+    private void setUpUi() {
+        loadingProgressBar = findViewById(R.id.loadingProgressBar);
         ventureNameDetailsTextView = findViewById(R.id.ventureNameDetailsTextView);
         ventureTypeDetailsTextView = findViewById(R.id.ventureTypeDetailsTextView);
         ventureParticipantsDetailsTextView = findViewById(R.id.ventureParticipantsDetailsTextView);
         venturePriceDetailsTextView = findViewById(R.id.venturePriceDetailsTextView);
         ventureLinkDetailsTextView = findViewById(R.id.ventureLinkDetailsTextView);
         ventureAccessibilityDetailsTextView = findViewById(R.id.ventureAccessibilityDetailsTextView);
-
-        ventureTypeName = getVentureDetails();
-
-        ApiHelper apiHelper = new ApiHelper();
-        apiHelper.searchVenture(ventureTypeName, this);
     }
 
     @NonNull
@@ -53,6 +61,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
     @Override
     public void onSuccess(SearchResponse data) {
+        loadingProgressBar.setVisibility(View.GONE);
         ventureNameDetailsTextView.setText(data.getVenture());
         ventureTypeDetailsTextView.setText(data.getType());
         ventureParticipantsDetailsTextView.setText(String.valueOf(data.getParticipants()));
@@ -66,6 +75,6 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
     @Override
     public void onFailure(String message) {
-
+        loadingProgressBar.setVisibility(View.GONE);
     }
 }
