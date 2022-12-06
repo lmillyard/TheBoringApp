@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.theboringapp.repository.ApiHelper;
 import com.example.theboringapp.repository.boring_models.SearchResponse;
@@ -76,5 +77,6 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     @Override
     public void onFailure(String message) {
         loadingProgressBar.setVisibility(View.GONE);
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
