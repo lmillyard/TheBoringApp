@@ -2,10 +2,14 @@ package com.example.theboringapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,14 +23,18 @@ import java.util.Locale;
 //Activity to display a random Activity or Venture depending on options picked by user
 public class VentureDetails extends AppCompatActivity implements GetVentureCallback<SearchResponse> {
 
-    private TextView ventureNameDetailsTextView;
-    private TextView ventureTypeDetailsTextView;
-    private TextView ventureParticipantsDetailsTextView;
-    private TextView venturePriceDetailsTextView;
-    private TextView ventureLinkDetailsTextView;
-    private TextView ventureAccessibilityDetailsTextView;
-    private String ventureTypeName;
+    private Context context;
+    private ImageView ventureDetailsTypeImageView;
+    private TextView ventureCardDetailsNameTextView;
+    private TextView ventureCardDetailsTypeTextView;
+    private TextView ventureCardDetailsParticipantsTextView;
+    private TextView ventureCardDetailsPriceTextView;
+    private TextView ventureCardDetailsLinkTextView;
+    private TextView ventureCardDetailsAccessibilityTextView;
     private ProgressBar loadingProgressBar;
+    private Button tryAgainButton;
+    private String ventureTypeName;
+    private int ventureTypeImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +44,32 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         setUpUi();
         loadingProgressBar.setVisibility(View.VISIBLE);
         ventureTypeName = getVentureDetails();
+        ventureTypeImage = getVentureImage();
 
         ApiHelper apiHelper = new ApiHelper();
         apiHelper.searchVenture(ventureTypeName, this);
+
+        tryAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                context.startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void setUpUi() {
         loadingProgressBar = findViewById(R.id.loadingProgressBar);
-        ventureNameDetailsTextView = findViewById(R.id.ventureNameDetailsTextView);
-        ventureTypeDetailsTextView = findViewById(R.id.ventureTypeDetailsTextView);
-        ventureParticipantsDetailsTextView = findViewById(R.id.ventureParticipantsDetailsTextView);
-        venturePriceDetailsTextView = findViewById(R.id.venturePriceDetailsTextView);
-        ventureLinkDetailsTextView = findViewById(R.id.ventureLinkDetailsTextView);
-        ventureAccessibilityDetailsTextView = findViewById(R.id.ventureAccessibilityDetailsTextView);
+        ventureDetailsTypeImageView = findViewById(R.id.ventureDetailsTypeImageView);
+        ventureCardDetailsNameTextView = findViewById(R.id.ventureCardDetailsNameTextView);
+        ventureCardDetailsTypeTextView = findViewById(R.id.ventureCardDetailsTypeTextView);
+        ventureCardDetailsParticipantsTextView = findViewById(R.id.ventureCardDetailsParticipantsTextView);
+        ventureCardDetailsPriceTextView = findViewById(R.id.ventureCardDetailsPriceTextView);
+        ventureCardDetailsLinkTextView = findViewById(R.id.ventureCardDetailsLinkTextView);
+        ventureCardDetailsAccessibilityTextView = findViewById(R.id.ventureCardDetailsAccessibilityTextView);
+        tryAgainButton = findViewById(R.id.tryAgainButton);
+
     }
 
     @NonNull
@@ -58,19 +79,25 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureTypeName = ventureTypeName.toLowerCase(Locale.ROOT);
         return ventureTypeName;
     }
+    private int getVentureImage() {
+        Intent intent = getIntent();
+        int ventureTypeImage = intent.getIntExtra("VentureImage", R.drawable.ic_baseline_tag_faces_24);
+        return ventureTypeImage;
+    }
 
 
     @Override
     public void onSuccess(SearchResponse data) {
         loadingProgressBar.setVisibility(View.GONE);
-        ventureNameDetailsTextView.setText(data.getVenture());
-        ventureTypeDetailsTextView.setText(data.getType());
-        ventureParticipantsDetailsTextView.setText(String.valueOf(data.getParticipants()));
-        venturePriceDetailsTextView.setText(String.valueOf(data.getPrice()));
+        ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
+        ventureCardDetailsNameTextView.setText(data.getVenture());
+        ventureCardDetailsTypeTextView.setText(data.getType());
+        ventureCardDetailsParticipantsTextView.setText(String.valueOf(data.getParticipants()));
+        ventureCardDetailsPriceTextView.setText(String.valueOf(data.getPrice()));
         if (data.getLink() != null) {
-            ventureLinkDetailsTextView.setText(data.getLink());
+            ventureCardDetailsLinkTextView.setText(data.getLink());
         }
-        ventureAccessibilityDetailsTextView.setText(String.valueOf(data.getAccessibility()));
+        ventureCardDetailsAccessibilityTextView.setText(String.valueOf(data.getAccessibility()));
 
     }
 

@@ -18,71 +18,122 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <TextView
-        android:id="@+id/ventureNameDetailsTextView"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/android_standard_padding"
         app:layout_constraintTop_toBottomOf="@id/detailsTextView"
-        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
-        app:layout_constraintRight_toRightOf="@id/detailsTextView"
-        tools:text="Do something most excellent!"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        >
 
-    <TextView
-        android:id="@+id/ventureTypeDetailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/android_standard_padding"
-        app:layout_constraintTop_toBottomOf="@id/ventureNameDetailsTextView"
-        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
-        app:layout_constraintRight_toRightOf="@id/detailsTextView"
-        tools:text="Social"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/ventureParticipantsDetailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/android_standard_padding"
-        app:layout_constraintTop_toBottomOf="@id/ventureTypeDetailsTextView"
-        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
-        app:layout_constraintRight_toRightOf="@id/detailsTextView"
-        tools:text="10"
-        />
+            <ImageView
+                android:id="@+id/ventureDetailsTypeImageView"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_margin="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="5dp"
+                tools:src="@drawable/ic_baseline_adb_24" />
 
-    <TextView
-        android:id="@+id/venturePriceDetailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/android_standard_padding"
-        app:layout_constraintTop_toBottomOf="@id/ventureParticipantsDetailsTextView"
-        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
-        app:layout_constraintRight_toRightOf="@id/detailsTextView"
-        tools:text="0.5"
-        />
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/ventureDetailsImageBarrier"
+                app:constraint_referenced_ids="ventureDetailsTypeImageView"
+                app:barrierDirection="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/ventureLinkDetailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/android_standard_padding"
-        app:layout_constraintTop_toBottomOf="@id/venturePriceDetailsTextView"
-        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
-        app:layout_constraintRight_toRightOf="@id/detailsTextView"
-        tools:text="www.dosometingawesome.com"
-        />
+            <TextView
+                android:id="@+id/ventureCardDetailsNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/ventureDetailsTypeImageView"
+                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:text="Something really fun!" />
 
-    <TextView
-        android:id="@+id/ventureAccessibilityDetailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/android_standard_padding"
-        app:layout_constraintTop_toBottomOf="@id/ventureLinkDetailsTextView"
-        app:layout_constraintLeft_toLeftOf="@id/detailsTextView"
-        app:layout_constraintRight_toRightOf="@id/detailsTextView"
-        tools:text="0.35"
-        />
+            <TextView
+                android:id="@+id/ventureCardDetailsTypeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsNameTextView"
+                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Social"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/ventureCardDetailsParticipantsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsTypeTextView"
+                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="3 people"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/ventureCardDetailsPriceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsParticipantsTextView"
+                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="0.5 monies"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:id="@+id/ventureCardDetailsLinkTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsPriceTextView"
+                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="www.do_something_fun_or_else.co.uk"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/ventureCardDetailsAccessibilityTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsLinkTextView"
+                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="0.1"
+                android:ellipsize="end"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/tryAgainButton"

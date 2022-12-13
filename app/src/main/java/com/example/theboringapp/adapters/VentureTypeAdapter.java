@@ -49,6 +49,7 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), VentureDetails.class);
                 intent.putExtra("Venture", ventureType.getVentureName());
+                intent.putExtra("VentureImage", ventureType.getVentureImage());
                 context.startActivity(intent);
             }
         });
