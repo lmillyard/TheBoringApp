@@ -9,4 +9,6 @@ import retrofit2.http.Query;
 public interface VentureTypeService {
     @GET("api/activity")
     Call<SearchResponse> searchVentures(@Query("type") String ventureType);
+
 }
+

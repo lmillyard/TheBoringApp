@@ -33,6 +33,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     private TextView ventureCardDetailsAccessibilityTextView;
     private ProgressBar loadingProgressBar;
     private Button tryAgainButton;
+    private Button goBackButton;
     private String ventureTypeName;
     private int ventureTypeImage;
 
@@ -49,12 +50,20 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ApiHelper apiHelper = new ApiHelper();
         apiHelper.searchVenture(ventureTypeName, this);
 
-        tryAgainButton.setOnClickListener(new View.OnClickListener() {
+        goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 context.startActivity(intent);
                 finish();
+            }
+        });
+
+        tryAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(getIntent());
             }
         });
     }
@@ -69,6 +78,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureCardDetailsLinkTextView = findViewById(R.id.ventureCardDetailsLinkTextView);
         ventureCardDetailsAccessibilityTextView = findViewById(R.id.ventureCardDetailsAccessibilityTextView);
         tryAgainButton = findViewById(R.id.tryAgainButton);
+        goBackButton = findViewById(R.id.goBackButton);
 
     }
 
