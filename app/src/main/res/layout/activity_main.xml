@@ -23,6 +23,7 @@
         app:layout_constraintRight_toRightOf="@id/topColourRectangleViewMainActivity"
         android:text="@string/pick_activity_type"
         android:textSize="20dp"
+        android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_width="match_parent"
