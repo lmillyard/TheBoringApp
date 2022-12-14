@@ -5,22 +5,35 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
-    android:padding="@dimen/android_standard_padding">
+    android:padding="@dimen/android_standard_padding"
+    android:background="@drawable/gradient_background">
 
+    <View
+        android:id="@+id/topColourRectangleViewMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/gradient_text_background"
+        />
     <TextView
         android:id="@+id/pickTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topColourRectangleViewMainActivity"
+        app:layout_constraintBottom_toBottomOf="@id/topColourRectangleViewMainActivity"
+        app:layout_constraintLeft_toLeftOf="@id/topColourRectangleViewMainActivity"
+        app:layout_constraintRight_toRightOf="@id/topColourRectangleViewMainActivity"
         android:text="@string/pick_activity_type"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_marginBottom="@dimen/android_standard_padding"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:padding="@dimen/android_standard_padding"
         android:id="@+id/ventureTypeRecyclerView"
-        app:layout_constraintTop_toBottomOf="@id/pickTextView"
+        app:layout_constraintTop_toBottomOf="@id/topColourRectangleViewMainActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
