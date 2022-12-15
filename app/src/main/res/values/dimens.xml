@@ -2,4 +2,5 @@
 <resources>
     <dimen name="android_standard_padding">16dp</dimen>
     <dimen name="standardHeadingSize">20dp</dimen>
+    <dimen name="subHeadingSize">18dp</dimen>
 </resources>
