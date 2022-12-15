@@ -110,7 +110,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
         ventureCardDetailsNameTextView.setText(data.getVenture());
         ventureCardDetailsTypeTextView.setText(data.getType());
-        ventureCardDetailsParticipantsTextView.setText("Participants: " + data.getParticipants());
+        ventureCardDetailsParticipantsTextView.setText(String.format(Locale.ROOT, "Participants: %d", data.getParticipants()));
         setPriceProgressBar(data);
         if (data.getLink() != null) {
             ventureCardDetailsLinkTextView.setText(data.getLink());
