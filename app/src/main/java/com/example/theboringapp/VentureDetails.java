@@ -36,6 +36,8 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     private Button goBackButton;
     private String ventureTypeName;
     private int ventureTypeImage;
+    private ProgressBar accessibilityProgressBar;
+    private ProgressBar priceProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,8 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureCardDetailsPriceTextView = findViewById(R.id.ventureCardDetailsPriceTextView);
         ventureCardDetailsLinkTextView = findViewById(R.id.ventureCardDetailsLinkTextView);
         ventureCardDetailsAccessibilityTextView = findViewById(R.id.ventureCardDetailsAccessibilityTextView);
+        accessibilityProgressBar = findViewById(R.id.accessibilityProgressBar);
+        priceProgressBar = findViewById(R.id.priceProgressBar);
         tryAgainButton = findViewById(R.id.tryAgainButton);
         goBackButton = findViewById(R.id.goBackButton);
 
@@ -106,13 +110,24 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
         ventureCardDetailsNameTextView.setText(data.getVenture());
         ventureCardDetailsTypeTextView.setText(data.getType());
-        ventureCardDetailsParticipantsTextView.setText(String.valueOf(data.getParticipants()));
-        ventureCardDetailsPriceTextView.setText(String.valueOf(data.getPrice()));
+        ventureCardDetailsParticipantsTextView.setText("Participants: " + data.getParticipants());
+        setPriceProgressBar(data);
         if (data.getLink() != null) {
             ventureCardDetailsLinkTextView.setText(data.getLink());
         }
-        ventureCardDetailsAccessibilityTextView.setText(String.valueOf(data.getAccessibility()));
+        setAccessibilityProgress(data);
 
+    }
+
+    private void setPriceProgressBar(SearchResponse data) {
+        double price = data.getPrice() * 100;
+        priceProgressBar.setProgress((int) price);
+    }
+
+    private void setAccessibilityProgress(SearchResponse data) {
+        double accessibility = data.getAccessibility() * 100;
+        double invertedAccessibility = 100 - accessibility;
+        accessibilityProgressBar.setProgress((int)invertedAccessibility);
     }
 
     @Override
