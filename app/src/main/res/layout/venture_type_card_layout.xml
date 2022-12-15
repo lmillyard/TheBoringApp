@@ -43,6 +43,6 @@
             tools:text="Something really fun!"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="20dp" />
+            android:textSize="@dimen/standardHeadingSize" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
