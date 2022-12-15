@@ -88,6 +88,9 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         String ventureTypeName = intent.getStringExtra("Venture");
         ventureTypeName = ventureTypeName.toLowerCase(Locale.ROOT);
         ventureTypeName = ventureTypeName.replaceAll("\\s+", "");
+        if(ventureTypeName.equalsIgnoreCase("random")) {
+            ventureTypeName = null;
+        }
         return ventureTypeName;
     }
     private int getVentureImage() {
