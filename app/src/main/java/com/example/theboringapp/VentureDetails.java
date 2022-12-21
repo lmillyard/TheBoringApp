@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -112,8 +113,16 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureCardDetailsTypeTextView.setText(data.getType());
         ventureCardDetailsParticipantsTextView.setText(String.format(Locale.ROOT, "Participants: %d", data.getParticipants()));
         setPriceProgressBar(data);
-        if (data.getLink() != null) {
-            ventureCardDetailsLinkTextView.setText(data.getLink());
+        if ((data.getLink() != null) || !(data.getLink().isEmpty())) {
+            String link = data.getLink();
+            ventureCardDetailsLinkTextView.setText(link);
+            ventureCardDetailsLinkTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                    startActivity(intent);
+                }
+            });
         }
         setAccessibilityProgress(data);
 
