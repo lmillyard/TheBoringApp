@@ -1,6 +1,7 @@
 package com.example.theboringapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,14 +23,12 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         RecyclerView ventureTypeRecyclerView = findViewById(R.id.ventureTypeRecyclerView);
-
         List<VentureType> ventureTypeList = VentureTypeRepositoryFactory.getVentureTypesRepository().getVentureTypes();
 
         VentureTypeAdapter ventureTypeAdapter = new VentureTypeAdapter(this, ventureTypeList);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
-        ventureTypeRecyclerView.setLayoutManager(linearLayoutManager);
+        ventureTypeRecyclerView.setLayoutManager(gridLayoutManager);
         ventureTypeRecyclerView.setAdapter(ventureTypeAdapter);
 
     }
