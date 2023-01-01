@@ -104,17 +104,31 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         return ventureTypeImage;
     }
 
+    private String makeCapital(String text){
+        String upperString = text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
+        return upperString;
+    }
 
     @Override
     public void onSuccess(SearchResponse data) {
         loadingProgressBar.setVisibility(View.GONE);
         ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
         ventureCardDetailsNameTextView.setText(data.getVenture());
-        ventureCardDetailsTypeTextView.setText(data.getType());
+        String ventureType = data.getType();
+        if ((ventureType != null )|| !(ventureType.isEmpty())) {
+            if(ventureType.equalsIgnoreCase("busywork")) {
+                ventureType = "Busy Work";
+            } else if (ventureType.equalsIgnoreCase("diy")){
+                ventureType = "DIY";
+            } else {
+                ventureType = makeCapital(ventureType);
+            }
+            ventureCardDetailsTypeTextView.setText(ventureType);
+        }
         ventureCardDetailsParticipantsTextView.setText(String.format(Locale.ROOT, "Participants: %d", data.getParticipants()));
         setPriceProgressBar(data);
-        if ((data.getLink() != null) || !(data.getLink().isEmpty())) {
-            String link = data.getLink();
+        String link = data.getLink();
+        if ((link != null) || !(link.isEmpty())) {
             ventureCardDetailsLinkTextView.setText(link);
             ventureCardDetailsLinkTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
