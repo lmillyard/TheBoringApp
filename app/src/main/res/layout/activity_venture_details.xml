@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".VentureDetails"
     android:background="@drawable/gradient_background"
-    android:padding="@dimen/android_standard_padding"
-
     >
 
     <View
@@ -15,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/gradient_text_background"
+        android:background="@color/black"
         />
     <TextView
         android:id="@+id/detailsTextView"
@@ -49,7 +47,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_text_background">
+            android:background="@color/black"
+            android:padding="@dimen/android_standard_padding"
+            >
 
             <ImageView
                 android:id="@+id/ventureDetailsTypeImageView"
@@ -196,20 +196,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/go_back_button_text"
-        android:background="@drawable/gradient_text_background"
+        android:background="@color/black"
         app:backgroundTint="@null"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/centralGuideline"
+        android:layout_marginBottom="@dimen/android_standard_padding"
         />
 
     <Button
         android:id="@+id/tryAgainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/android_standard_padding"
         android:text="@string/try_again_button_text"
-        android:background="@drawable/gradient_text_background"
+        android:background="@color/black"
         app:backgroundTint="@null"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
