@@ -100,7 +100,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     }
     private int getVentureImage() {
         Intent intent = getIntent();
-        int ventureTypeImage = intent.getIntExtra("VentureImage", R.drawable.ic_baseline_tag_faces_24);
+        int ventureTypeImage = intent.getIntExtra("VentureImage", R.drawable.default_image);
         return ventureTypeImage;
     }
 
