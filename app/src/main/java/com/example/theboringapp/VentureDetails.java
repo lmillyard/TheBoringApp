@@ -46,7 +46,6 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         setContentView(R.layout.activity_venture_details);
 
         setUpUi();
-        loadingProgressBar.setVisibility(View.VISIBLE);
         ventureTypeName = getVentureDetails();
         ventureTypeImage = getVentureImage();
 
@@ -73,6 +72,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
     private void setUpUi() {
         loadingProgressBar = findViewById(R.id.loadingProgressBar);
+        loadingProgressBar.setVisibility(View.VISIBLE);
         ventureDetailsTypeImageView = findViewById(R.id.ventureDetailsTypeImageView);
         ventureCardDetailsNameTextView = findViewById(R.id.ventureCardDetailsNameTextView);
         ventureCardDetailsTypeTextView = findViewById(R.id.ventureCardDetailsTypeTextView);

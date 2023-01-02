@@ -21,7 +21,7 @@
         app:layout_constraintLeft_toLeftOf="@id/topColourRectangleViewMainActivity"
         app:layout_constraintRight_toRightOf="@id/topColourRectangleViewMainActivity"
         android:text="@string/pick_activity_type"
-        android:textSize="@dimen/standardHeadingSize"
+        android:textSize="@dimen/android_main_heading"
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/white"

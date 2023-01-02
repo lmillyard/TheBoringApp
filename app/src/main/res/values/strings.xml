@@ -6,4 +6,5 @@
     <string name="accessibility">Accessibility:</string>
     <string name="price">Price:</string>
     <string name="your_chosen_activity_is">Your chosen activity is:</string>
+    <string name="type_of_activity_image_desc">Type of activity image</string>
 </resources>

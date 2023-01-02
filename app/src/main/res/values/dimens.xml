@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="android_standard_padding">16dp</dimen>
-    <dimen name="standardHeadingSize">18dp</dimen>
-    <dimen name="subHeadingSize">15dp</dimen>
-    <dimen name="standardSubSubHeadingSize">14dp</dimen>
+    <dimen name="android_main_heading">20sp</dimen>
+    <dimen name="standard_heading_size">18sp</dimen>
+    <dimen name="sub_heading_size">16sp</dimen>
+    <dimen name="standard_sub_sub_heading_size">14sp</dimen>
 </resources>

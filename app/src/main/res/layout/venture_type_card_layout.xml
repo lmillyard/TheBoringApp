@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:layout_width="175dp"
-    android:layout_height="200dp"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
     android:layout_margin="5dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
-    app:cardMaxElevation="10dp"
+    app:cardElevation="1dp"
+    app:cardMaxElevation="1dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
@@ -23,8 +23,9 @@
 
         <ImageView
             android:id="@+id/ventureTypeImageView"
+            android:contentDescription="@string/type_of_activity_image_desc"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="75dp"
             tools:src="@drawable/ic_baseline_cast_for_education_24" />
 
         <TextView
@@ -36,6 +37,6 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="@dimen/standardSubSubHeadingSize" />
+            android:textSize="@dimen/standard_sub_sub_heading_size" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
