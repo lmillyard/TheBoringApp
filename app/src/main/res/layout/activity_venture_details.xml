@@ -48,26 +48,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/black"
-            android:padding="@dimen/android_standard_padding"
             >
 
             <ImageView
+                android:contentDescription="@string/type_of_activity_image_desc"
                 android:id="@+id/ventureDetailsTypeImageView"
-                android:layout_width="120dp"
-                android:layout_height="130dp"
-                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="@dimen/android_standard_padding"
+                android:scaleType="centerCrop"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:padding="5dp"
-                tools:src="@drawable/ic_baseline_adb_24" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/ventureDetailsImageBarrier"
-                app:constraint_referenced_ids="ventureDetailsTypeImageView"
-                app:barrierDirection="right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                tools:src="@drawable/default_image" />
 
             <TextView
                 android:id="@+id/ventureCardDetailsNameTextView"
@@ -78,9 +70,9 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 tools:text="Something really fun!Something really fun!Something really fun!"
-                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ventureDetailsTypeImageView"
                 />
 
             <TextView
@@ -91,7 +83,7 @@
                 android:textColor="@color/white"
                 tools:text="Social"
                 android:gravity="center"
-                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsNameTextView"
                 />
@@ -105,7 +97,7 @@
                 android:textSize="@dimen/sub_heading_size"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsTypeTextView"
-                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 />
 
@@ -119,7 +111,7 @@
                 android:textSize="@dimen/sub_heading_size"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsParticipantsTextView"
-                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 />
 
             <ProgressBar
@@ -132,7 +124,7 @@
                 android:progress="0"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsPriceTextView"
-                app:layout_constraintLeft_toLeftOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:progressTint="@color/white"
                 />
@@ -148,7 +140,7 @@
                 android:textSize="@dimen/sub_heading_size"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/priceProgressBar"
-                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 />
 
@@ -162,7 +154,7 @@
                 android:textSize="@dimen/sub_heading_size"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsLinkTextView"
-                app:layout_constraintLeft_toRightOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 />
 
@@ -172,11 +164,12 @@
                 android:layout_width="0dp"
                 android:layout_marginLeft="@dimen/android_standard_padding"
                 android:layout_marginRight="@dimen/android_standard_padding"
+                android:layout_marginBottom="@dimen/android_standard_padding"
                 android:max="100"
                 android:progress="0"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsAccessibilityTextView"
-                app:layout_constraintLeft_toLeftOf="@id/ventureDetailsImageBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:progressTint="@color/white"
                 />

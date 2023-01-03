@@ -22,15 +22,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".PickedActivityFragment"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:hardwareAccelerated="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

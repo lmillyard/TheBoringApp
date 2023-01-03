@@ -17,9 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        android:gravity="center"
         android:orientation="vertical"
         >
+
 
         <ImageView
             android:id="@+id/ventureTypeImageView"
@@ -28,6 +28,7 @@
             android:layout_height="110dp"
             tools:src="@drawable/default_image"
             android:scaleType="centerCrop"
+            android:layout_marginBottom="6dp"
             />
 
         <TextView
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             tools:text="Something really fun!"
             android:textAllCaps="true"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="@dimen/standard_sub_sub_heading_size" />
