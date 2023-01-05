@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/android_standard_padding">
+    android:padding="@dimen/android_standard_half_padding">
 
 
     <TextView
@@ -36,7 +36,7 @@
         android:layout_width="170dp"
         android:layout_height="170dp"
         tools:src="@drawable/default_image"
-        android:layout_margin="@dimen/android_standard_half_padding"
+        android:padding="@dimen/android_standard_half_padding"
         android:scaleType="centerCrop"
         android:layout_gravity="center"
         app:strokeColor="@color/white"
