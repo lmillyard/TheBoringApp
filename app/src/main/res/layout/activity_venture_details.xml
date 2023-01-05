@@ -82,6 +82,7 @@
         />
 
     <LinearLayout
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/android_standard_half_padding"
@@ -100,7 +101,7 @@
                 android:id="@+id/ventureCardDetailsParticipantsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Participants:"
+                android:text="@string/participants"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sub_heading_size"
                 />
