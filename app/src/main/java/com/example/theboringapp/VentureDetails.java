@@ -2,7 +2,6 @@ package com.example.theboringapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -32,9 +31,9 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     private TextView ventureCardDetailsPriceTextView;
     private TextView ventureCardDetailsLinkTextView;
     private TextView ventureCardDetailsAccessibilityTextView;
-    private ProgressBar loadingProgressBar;
+    private TextView xCloseTextView;
+    private TextView ventureCardDetailsParticipantsAmountTextView;
     private Button tryAgainButton;
-    private Button goBackButton;
     private String ventureTypeName;
     private int ventureTypeImage;
     private ProgressBar accessibilityProgressBar;
@@ -52,7 +51,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ApiHelper apiHelper = new ApiHelper();
         apiHelper.searchVenture(ventureTypeName, this);
 
-        goBackButton.setOnClickListener(new View.OnClickListener() {
+        xCloseTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
@@ -71,19 +70,18 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     }
 
     private void setUpUi() {
-        loadingProgressBar = findViewById(R.id.loadingProgressBar);
-        loadingProgressBar.setVisibility(View.VISIBLE);
         ventureDetailsTypeImageView = findViewById(R.id.ventureDetailsTypeImageView);
         ventureCardDetailsNameTextView = findViewById(R.id.ventureCardDetailsNameTextView);
         ventureCardDetailsTypeTextView = findViewById(R.id.ventureCardDetailsTypeTextView);
         ventureCardDetailsParticipantsTextView = findViewById(R.id.ventureCardDetailsParticipantsTextView);
+        ventureCardDetailsParticipantsAmountTextView = findViewById(R.id.ventureCardDetailsParticipantsAmountTextView);
         ventureCardDetailsPriceTextView = findViewById(R.id.ventureCardDetailsPriceTextView);
         ventureCardDetailsLinkTextView = findViewById(R.id.ventureCardDetailsLinkTextView);
         ventureCardDetailsAccessibilityTextView = findViewById(R.id.ventureCardDetailsAccessibilityTextView);
         accessibilityProgressBar = findViewById(R.id.accessibilityProgressBar);
         priceProgressBar = findViewById(R.id.priceProgressBar);
         tryAgainButton = findViewById(R.id.tryAgainButton);
-        goBackButton = findViewById(R.id.goBackButton);
+        xCloseTextView = findViewById(R.id.xCloseTextView);
 
     }
 
@@ -111,7 +109,6 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
     @Override
     public void onSuccess(SearchResponse data) {
-        loadingProgressBar.setVisibility(View.GONE);
         ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
         ventureCardDetailsNameTextView.setText(data.getVenture());
         String ventureType = data.getType();
@@ -125,7 +122,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
             }
             ventureCardDetailsTypeTextView.setText(ventureType);
         }
-        ventureCardDetailsParticipantsTextView.setText(String.format(Locale.ROOT, "Participants: %d", data.getParticipants()));
+        ventureCardDetailsParticipantsAmountTextView.setText("" + data.getParticipants());
         setPriceProgressBar(data);
         String link = data.getLink();
         if ((link != null) || !(link.isEmpty())) {
@@ -155,7 +152,6 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
     @Override
     public void onFailure(String message) {
-        loadingProgressBar.setVisibility(View.GONE);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

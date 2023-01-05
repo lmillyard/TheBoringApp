@@ -1,105 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".VentureDetails"
-    android:background="@drawable/gradient_background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detailsContainer"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/background_blue"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="1dp"
+    app:cardMaxElevation="1dp"
+    android:padding="5dp"
+    android:layout_gravity="center"
     >
 
-    <View
-        android:id="@+id/topColourRectangleViewVentureDetails"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/black"
-        />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/android_standard_half_padding">
+
+
     <TextView
-        android:id="@+id/detailsTextView"
+        android:id="@+id/xCloseTextView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:textStyle="bold"
+        android:text="@string/x_close"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/circle_background"
+        android:layout_gravity="end"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:contentDescription="@string/type_of_activity_image_desc"
+        android:id="@+id/ventureDetailsTypeImageView"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        tools:src="@drawable/default_image"
+        android:layout_margin="@dimen/android_standard_half_padding"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+        />
+
+    <TextView
+        android:id="@+id/ventureCardDetailsNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/your_chosen_activity_is"
-        android:textSize="@dimen/android_main_heading"
         android:textColor="@color/white"
+        android:textSize="@dimen/standard_heading_size"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/topColourRectangleViewVentureDetails"
-        app:layout_constraintBottom_toBottomOf="@id/topColourRectangleViewVentureDetails"
-        app:layout_constraintLeft_toLeftOf="@id/topColourRectangleViewVentureDetails"
-        app:layout_constraintRight_toRightOf="@id/topColourRectangleViewVentureDetails"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        tools:text="Something really fun!Something really fun!Something really fun!"
         />
 
-    <androidx.cardview.widget.CardView
+    <TextView
+        android:id="@+id/ventureCardDetailsTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sub_heading_size"
+        android:textColor="@color/white"
+        tools:text="Social"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:id="@+id/ventureCardDetailsLinkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="www.do_something_fun_or_else.co.uk"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="#00BCD4"
+        android:textSize="@dimen/sub_heading_size"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/topColourRectangleViewVentureDetails"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tryAgainButton"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:cardMaxElevation="10dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
+        android:layout_marginTop="@dimen/android_standard_half_padding"
+        android:orientation="horizontal"
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:background="@color/teal_700"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
             >
-
-            <ImageView
-                android:contentDescription="@string/type_of_activity_image_desc"
-                android:id="@+id/ventureDetailsTypeImageView"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginBottom="@dimen/android_standard_padding"
-                android:scaleType="centerCrop"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/default_image" />
-
-            <TextView
-                android:id="@+id/ventureCardDetailsNameTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="@dimen/standard_heading_size"
-                android:textStyle="bold"
-                android:gravity="center"
-                tools:text="Something really fun!Something really fun!Something really fun!"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ventureDetailsTypeImageView"
-                />
-
-            <TextView
-                android:id="@+id/ventureCardDetailsTypeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/sub_heading_size"
-                android:textColor="@color/white"
-                tools:text="Social"
-                android:gravity="center"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsNameTextView"
-                />
-
             <TextView
                 android:id="@+id/ventureCardDetailsParticipantsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="3 people"
+                android:text="Participants:"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sub_heading_size"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsTypeTextView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 />
+            <TextView
+                android:id="@+id/ventureCardDetailsParticipantsAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sub_heading_size"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:background="#4CAF50"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/ventureCardDetailsPriceTextView"
@@ -109,119 +130,66 @@
                 android:text="@string/price"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sub_heading_size"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsParticipantsTextView"
-                app:layout_constraintLeft_toLeftOf="parent"
                 />
-
             <ProgressBar
                 android:id="@+id/priceProgressBar"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_marginLeft="@dimen/android_standard_padding"
                 android:layout_marginRight="@dimen/android_standard_padding"
                 android:max="100"
-                android:progress="0"
+                tools:progress="100"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsPriceTextView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 android:progressTint="@color/white"
                 />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/ventureCardDetailsLinkTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                tools:text="www.do_something_fun_or_else.co.uk"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="#00BCD4"
-                android:textSize="@dimen/sub_heading_size"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/priceProgressBar"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                />
+        <LinearLayout
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/ventureCardDetailsAccessibilityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/accessibility"
-                android:ellipsize="end"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sub_heading_size"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsLinkTextView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 />
 
             <ProgressBar
                 android:id="@+id/accessibilityProgressBar"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_marginLeft="@dimen/android_standard_padding"
                 android:layout_marginRight="@dimen/android_standard_padding"
-                android:layout_marginBottom="@dimen/android_standard_padding"
                 android:max="100"
-                android:progress="0"
+                tools:progress="100"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                app:layout_constraintTop_toBottomOf="@id/ventureCardDetailsAccessibilityTextView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 android:progressTint="@color/white"
                 />
 
-            <ProgressBar
-                android:id="@+id/loadingProgressBar"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:visibility="visible" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/centralGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"
-        />
-
-    <Button
-        android:id="@+id/goBackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/go_back_button_text"
-        android:background="@drawable/rounded_corner_button"
-        app:backgroundTint="@null"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/centralGuideline"
-        android:layout_marginBottom="@dimen/android_standard_padding"
-        />
+    </LinearLayout>
 
     <Button
         android:id="@+id/tryAgainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/android_standard_padding"
         android:text="@string/try_again_button_text"
         android:background="@drawable/rounded_corner_button"
         app:backgroundTint="@null"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/centralGuideline"
-        app:layout_constraintRight_toRightOf="parent"
-/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/android_standard_padding"
+        />
+</LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
