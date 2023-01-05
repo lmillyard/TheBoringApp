@@ -2,8 +2,8 @@
 <resources>
     <dimen name="android_standard_padding">16dp</dimen>
     <dimen name="android_standard_half_padding">8dp</dimen>
-    <dimen name="android_main_heading">20sp</dimen>
-    <dimen name="standard_heading_size">18sp</dimen>
-    <dimen name="sub_heading_size">16sp</dimen>
-    <dimen name="standard_sub_sub_heading_size">14sp</dimen>
+    <dimen name="main_heading">20sp</dimen>
+    <dimen name="sub_heading_size">18sp</dimen>
+    <dimen name="main_text_size">16sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
 </resources>

@@ -1,8 +1,5 @@
 package com.example.theboringapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.theboringapp.repository.ApiHelper;
 import com.example.theboringapp.repository.boring_models.SearchResponse;
@@ -27,14 +27,10 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     private ImageView ventureDetailsTypeImageView;
     private TextView ventureCardDetailsNameTextView;
     private TextView ventureCardDetailsTypeTextView;
-    private TextView ventureCardDetailsParticipantsTextView;
-    private TextView ventureCardDetailsPriceTextView;
     private TextView ventureCardDetailsLinkTextView;
-    private TextView ventureCardDetailsAccessibilityTextView;
     private TextView xCloseTextView;
     private TextView ventureCardDetailsParticipantsAmountTextView;
     private Button tryAgainButton;
-    private String ventureTypeName;
     private int ventureTypeImage;
     private ProgressBar accessibilityProgressBar;
     private ProgressBar priceProgressBar;
@@ -45,7 +41,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         setContentView(R.layout.activity_venture_details);
 
         setUpUi();
-        ventureTypeName = getVentureDetails();
+        String ventureTypeName = getVentureDetails();
         ventureTypeImage = getVentureImage();
 
         ApiHelper apiHelper = new ApiHelper();
@@ -73,11 +69,8 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureDetailsTypeImageView = findViewById(R.id.ventureDetailsTypeImageView);
         ventureCardDetailsNameTextView = findViewById(R.id.ventureCardDetailsNameTextView);
         ventureCardDetailsTypeTextView = findViewById(R.id.ventureCardDetailsTypeTextView);
-        ventureCardDetailsParticipantsTextView = findViewById(R.id.ventureCardDetailsParticipantsTextView);
         ventureCardDetailsParticipantsAmountTextView = findViewById(R.id.ventureCardDetailsParticipantsAmountTextView);
-        ventureCardDetailsPriceTextView = findViewById(R.id.ventureCardDetailsPriceTextView);
         ventureCardDetailsLinkTextView = findViewById(R.id.ventureCardDetailsLinkTextView);
-        ventureCardDetailsAccessibilityTextView = findViewById(R.id.ventureCardDetailsAccessibilityTextView);
         accessibilityProgressBar = findViewById(R.id.accessibilityProgressBar);
         priceProgressBar = findViewById(R.id.priceProgressBar);
         tryAgainButton = findViewById(R.id.tryAgainButton);
@@ -98,13 +91,11 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     }
     private int getVentureImage() {
         Intent intent = getIntent();
-        int ventureTypeImage = intent.getIntExtra("VentureImage", R.drawable.default_image);
-        return ventureTypeImage;
+        return intent.getIntExtra("VentureImage", R.drawable.default_image);
     }
 
     private String makeCapital(String text){
-        String upperString = text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
-        return upperString;
+        return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
     }
 
     @Override
@@ -112,10 +103,10 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
         ventureCardDetailsNameTextView.setText(data.getVenture());
         String ventureType = data.getType();
-        if ((ventureType != null )|| !(ventureType.isEmpty())) {
-            if(ventureType.equalsIgnoreCase("busywork")) {
+        if (((ventureType != null))) {
+            if (ventureType.equalsIgnoreCase("busywork")) {
                 ventureType = "Busy Work";
-            } else if (ventureType.equalsIgnoreCase("diy")){
+            } else if (ventureType.equalsIgnoreCase("diy")) {
                 ventureType = "DIY";
             } else {
                 ventureType = makeCapital(ventureType);
@@ -125,7 +116,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureCardDetailsParticipantsAmountTextView.setText("" + data.getParticipants());
         setPriceProgressBar(data);
         String link = data.getLink();
-        if ((link != null) || !(link.isEmpty())) {
+        if ((link != null)) {
             ventureCardDetailsLinkTextView.setText(link);
             ventureCardDetailsLinkTextView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -38,9 +38,7 @@
             tools:text="Something really fun!"
             android:textAllCaps="true"
             android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="@dimen/standard_sub_sub_heading_size" />
+            style="@style/customSmallBoldText"/>
 
 
     </LinearLayout>

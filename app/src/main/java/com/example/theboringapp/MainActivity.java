@@ -1,18 +1,15 @@
 package com.example.theboringapp;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.example.theboringapp.adapters.VentureTypeAdapter;
 import com.example.theboringapp.models.VentureType;
-import com.example.theboringapp.repository.ApiHelper;
 import com.example.theboringapp.repository.VentureTypeRepositoryFactory;
-import com.example.theboringapp.repository.boring_models.SearchResponse;
-import com.example.theboringapp.repository.callbacks.GetVentureCallback;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
