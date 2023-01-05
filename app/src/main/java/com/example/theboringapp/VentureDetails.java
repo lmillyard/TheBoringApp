@@ -1,6 +1,5 @@
 package com.example.theboringapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import java.util.Locale;
 //Activity to display a random Activity or Venture depending on options picked by user
 public class VentureDetails extends AppCompatActivity implements GetVentureCallback<SearchResponse> {
 
-    private Context context;
     private ImageView ventureDetailsTypeImageView;
     private TextView ventureCardDetailsNameTextView;
     private TextView ventureCardDetailsTypeTextView;
@@ -35,8 +33,13 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     private ProgressBar accessibilityProgressBar;
     private ProgressBar priceProgressBar;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venture_details);
 
@@ -50,8 +53,8 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         xCloseTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                context.startActivity(intent);
+                Intent intent = new Intent(VentureDetails.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -145,4 +148,6 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     public void onFailure(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+
 }
