@@ -22,6 +22,15 @@ import java.util.Locale;
 //Activity to display a random Activity or Venture depending on options picked by user
 public class VentureDetails extends AppCompatActivity implements GetVentureCallback<SearchResponse> {
 
+    public static final double FREE_MIN_PRICE = 0.0;
+    public static final double FREE_MAX_PRICE = 0.0;
+    public static final double CHEAP_MIN_PRICE = 0.0;
+    public static final double CHEAP_MAX_PRICE = 0.33;
+    public static final double MIDDLE_MIN_PRICE = 0.33;
+    public static final double MIDDLE_MAX_PRICE = 0.66;
+    public static final double EXPENSIVE_MIN_PRICE = 0.66;
+    public static final double EXPENSIVE_MAX_PRICE = 1.0;
+
     private ImageView ventureDetailsTypeImageView;
     private TextView ventureCardDetailsNameTextView;
     private TextView ventureCardDetailsTypeTextView;
@@ -35,10 +44,8 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venture_details);
@@ -48,7 +55,25 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         ventureTypeImage = getVentureImage();
 
         ApiHelper apiHelper = new ApiHelper();
-        apiHelper.searchVenture(ventureTypeName, this);
+        Intent intent = getIntent();
+        String filterType = intent.getStringExtra("PriceFilter");
+        if (filterType.equalsIgnoreCase("all")) {
+            apiHelper.searchVenture(ventureTypeName, this);
+        } else {
+            switch (filterType.toLowerCase(Locale.ROOT)) {
+                case "free":
+                    apiHelper.searchVentureByPrice(ventureTypeName, FREE_MIN_PRICE, FREE_MAX_PRICE, this);
+                case "cheap":
+                    apiHelper.searchVentureByPrice(ventureTypeName, CHEAP_MIN_PRICE, CHEAP_MAX_PRICE, this);
+                case "middle":
+                    apiHelper.searchVentureByPrice(ventureTypeName, MIDDLE_MIN_PRICE, MIDDLE_MAX_PRICE, this);
+                case "expensive":
+                    apiHelper.searchVentureByPrice(ventureTypeName, EXPENSIVE_MIN_PRICE, EXPENSIVE_MAX_PRICE, this);
+
+            }
+
+        }
+
 
         xCloseTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +93,9 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         });
     }
 
+// Checks if user has used the price filter radio buttons in main activity and returns boolean (false if non selected)
+
+
     private void setUpUi() {
         ventureDetailsTypeImageView = findViewById(R.id.ventureDetailsTypeImageView);
         ventureCardDetailsNameTextView = findViewById(R.id.ventureCardDetailsNameTextView);
@@ -81,6 +109,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
     }
 
+    //Gets the type of activity chosen
     @NonNull
     private String getVentureDetails() {
         Intent intent = getIntent();
@@ -92,6 +121,8 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
         }
         return ventureTypeName;
     }
+
+//gets image from selected venture type
     private int getVentureImage() {
         Intent intent = getIntent();
         return intent.getIntExtra("VentureImage", R.drawable.default_image);
@@ -103,33 +134,40 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
 
     @Override
     public void onSuccess(SearchResponse data) {
-        ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
-        ventureCardDetailsNameTextView.setText(data.getVenture());
-        String ventureType = data.getType();
-        if (((ventureType != null))) {
-            if (ventureType.equalsIgnoreCase("busywork")) {
-                ventureType = "Busy Work";
-            } else if (ventureType.equalsIgnoreCase("diy")) {
-                ventureType = "DIY";
-            } else {
-                ventureType = makeCapital(ventureType);
-            }
-            ventureCardDetailsTypeTextView.setText(ventureType);
-        }
-        ventureCardDetailsParticipantsAmountTextView.setText("" + data.getParticipants());
-        setPriceProgressBar(data);
-        String link = data.getLink();
-        if ((link != null)) {
-            ventureCardDetailsLinkTextView.setText(link);
-            ventureCardDetailsLinkTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-                    startActivity(intent);
+        String ventureError = data.getVentureError();
+        if (ventureError != null) {
+            ventureDetailsTypeImageView.setImageResource(R.drawable.default_image);
+            ventureCardDetailsNameTextView.setText(data.getVentureError());
+        } else {
+            ventureDetailsTypeImageView.setImageResource(ventureTypeImage);
+            ventureCardDetailsNameTextView.setText(data.getVenture());
+            String ventureType = data.getType();
+            if (((ventureType != null))) {
+                if (ventureType.equalsIgnoreCase("busywork")) {
+                    ventureType = "Busy Work";
+                } else if (ventureType.equalsIgnoreCase("diy")) {
+                    ventureType = "DIY";
+                } else {
+                    ventureType = makeCapital(ventureType);
                 }
-            });
+                ventureCardDetailsTypeTextView.setText(ventureType);
+            }
+            ventureCardDetailsParticipantsAmountTextView.setText("" + data.getParticipants());
+            setPriceProgressBar(data);
+            String link = data.getLink();
+            if ((link != null)) {
+                ventureCardDetailsLinkTextView.setText(link);
+                ventureCardDetailsLinkTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                        startActivity(intent);
+                    }
+                });
+            }
+            setAccessibilityProgress(data);
         }
-        setAccessibilityProgress(data);
+
 
     }
 

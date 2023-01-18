@@ -15,6 +15,8 @@ public class SearchResponse {
     private String link;
     @SerializedName("accessibility")
     private double accessibility;
+    @SerializedName("error")
+    private String ventureError;
 
     public String getVenture() {
         return venture;
@@ -38,5 +40,9 @@ public class SearchResponse {
 
     public String getLink() {
         return link;
+    }
+
+    public String getVentureError() {
+        return ventureError;
     }
 }

@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background_blue">#194F68</color>
     <color name="grey">#8F8D8D</color>
+    <color name="darkActionBar">#0C2425</color>
 
 
 </resources>

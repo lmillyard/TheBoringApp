@@ -14,6 +14,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
     </style>
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
         <item name="cornerSize">50%</item>
@@ -54,6 +55,12 @@
         <item name="android:fontFamily">@font/kalam_font_family</item>
         <item name="android:textSize">@dimen/small_text_size</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="customSmallText" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/kalam_font_family</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/white</item>
     </style>
 </resources>

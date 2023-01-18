@@ -105,6 +105,7 @@
                 tools:text="3"
                 style="@style/customMainText"
                 />
+
         </LinearLayout>
 
         <LinearLayout

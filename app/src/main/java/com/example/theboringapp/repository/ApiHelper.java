@@ -2,6 +2,7 @@ package com.example.theboringapp.repository;
 
 import com.example.theboringapp.repository.boring_models.SearchResponse;
 import com.example.theboringapp.repository.callbacks.GetVentureCallback;
+import com.example.theboringapp.repository.services.VentureByPrice;
 import com.example.theboringapp.repository.services.VentureTypeService;
 
 import okhttp3.OkHttpClient;
@@ -34,6 +35,28 @@ public class ApiHelper {
     public void searchVenture(String searchTerm, GetVentureCallback<SearchResponse> callback) {
         VentureTypeService ventureTypeService = retrofit.create(VentureTypeService.class);
         Call<SearchResponse> call = ventureTypeService.searchVentures(searchTerm);
+        call.enqueue(new Callback<SearchResponse>() {
+            @Override
+            public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                if(response.isSuccessful()) {
+                    SearchResponse body = response.body();
+                    callback.onSuccess(body);
+                } else {
+                    callback.onFailure("Response not successful:" + response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchResponse> call, Throwable t) {
+                callback.onFailure("Check connection.");
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public void searchVentureByPrice(String ventureType, double minPrice, double maxPrice, GetVentureCallback<SearchResponse> callback) {
+        VentureByPrice ventureByPrice = retrofit.create(VentureByPrice.class);
+        Call<SearchResponse> call = ventureByPrice.searchVenturesByPrice(ventureType, minPrice, maxPrice);
         call.enqueue(new Callback<SearchResponse>() {
             @Override
             public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {

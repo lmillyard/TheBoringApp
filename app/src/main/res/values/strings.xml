@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TheBoringApp</string>
-    <string name="pick_activity_type">What kind of activity would you like to do?</string>
+    <string name="pick_activity_type">What boredom busting adventure tickles your fancy?</string>
     <string name="go_back_button_text">Go Back?</string>
     <string name="try_again_button_text">Try Again?</string>
     <string name="accessibility">Accessibility:</string>
@@ -9,4 +9,11 @@
     <string name="type_of_activity_image_desc">Type of activity image</string>
     <string name="x_close">X</string>
     <string name="participants">Participants:</string>
+    <string name="expensive_filter">Bougi</string>
+    <string name="middle_filter">Flashy</string>
+    <string name="cheap_filter">Cheap</string>
+    <string name="free_filter">Free</string>
+    <string name="all_filter">All</string>
+    <string name="question_mark_image">Question mark image</string>
+    <string name="filter_by_price">Filter by Price:</string>
 </resources>
