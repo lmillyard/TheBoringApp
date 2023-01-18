@@ -53,6 +53,7 @@ public class VentureTypeAdapter extends RecyclerView.Adapter<VentureTypeAdapter.
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Send the info from which card has been picked and the filter type from main activity to the VentureDetails activity
                 String filterType = ((MainActivity) context).filterType;
                 Intent intent = new Intent(view.getContext(), VentureDetails.class);
                 intent.putExtra("PriceFilter", filterType);

@@ -19,7 +19,7 @@ import com.example.theboringapp.repository.callbacks.GetVentureCallback;
 
 import java.util.Locale;
 
-//Activity to display a random Activity or Venture depending on options picked by user
+//Activity to display a random Venture depending on options picked by user in the main activity
 public class VentureDetails extends AppCompatActivity implements GetVentureCallback<SearchResponse> {
 
     public static final double FREE_MIN_PRICE = 0.0;
@@ -135,6 +135,7 @@ public class VentureDetails extends AppCompatActivity implements GetVentureCallb
     @Override
     public void onSuccess(SearchResponse data) {
         String ventureError = data.getVentureError();
+        //checks if there is a venture available with given parameters (I.E the filter options) if not it displays an error message
         if (ventureError != null) {
             ventureDetailsTypeImageView.setImageResource(R.drawable.default_image);
             ventureCardDetailsNameTextView.setText(data.getVentureError());
